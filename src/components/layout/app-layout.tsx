@@ -61,7 +61,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
     : 'U';
 
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={false}>
       <AppSidebar />
       <SidebarInset>
         {/* Header - glass card effect */}
@@ -155,25 +155,27 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           </DropdownMenu>
         </header>
 
-        {/* Main Content */}
+        {/* Main Content - centered */}
         <main className="flex-1 p-4 md:p-8">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentPage}
-              initial={{ opacity: 0, y: 12, scale: 0.99 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -8, scale: 0.99 }}
-              transition={{
-                type: 'spring',
-                stiffness: 300,
-                damping: 30,
-                mass: 0.8,
-              }}
-              className="min-h-[calc(100vh-10rem)]"
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
+          <div className="mx-auto max-w-7xl">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentPage}
+                initial={{ opacity: 0, y: 12, scale: 0.99 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.99 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 300,
+                  damping: 30,
+                  mass: 0.8,
+                }}
+                className="min-h-[calc(100vh-10rem)]"
+              >
+                {children}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </main>
 
         {/* Footer - cleaner with glass top border */}

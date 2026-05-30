@@ -678,3 +678,23 @@ Stage Summary:
 - TipTap TextStyle: use named import { TextStyle } from '@tiptap/extension-text-style'
 - seed.ts: confirmed bcryptjs hashing ($2b$10$ prefix)
 - GitHub: pushed to https://github.com/AQUASAURIO/elevate-lms.git (72dc0e2)
+
+---
+Task ID: 7
+Agent: main
+Task: Fix sidebar layout issues - remove notifications, improve logo, center content, start collapsed
+
+Work Log:
+- Read sidebar.tsx and app-layout.tsx to understand current state
+- Removed notifications from sidebar navItems (already exists in header bell icon)
+- Removed unused imports (Bell, Badge, Settings)
+- Improved logo visibility by adding gradient background (from-[#0077B6] to-[#0A2647]) behind the logo image
+- Added `defaultOpen={false}` to SidebarProvider to start sidebar collapsed by default
+- Centered main content with `mx-auto max-w-7xl` wrapper div
+- Ran lint - 0 errors, 2 pre-existing warnings only
+
+Stage Summary:
+- Sidebar now starts collapsed showing only logo + nav icons
+- Notifications removed from sidebar (already in header)
+- Logo has visible gradient background instead of invisible transparent PNG
+- Main content area is now centered relative to the sidebar

@@ -1,6 +1,6 @@
 'use client';
 
-import { GraduationCap, LayoutDashboard, BookOpen, Users, FileText, Megaphone, Bell, User, ClipboardList, ScrollText } from 'lucide-react';
+import { GraduationCap, LayoutDashboard, BookOpen, Users, FileText, Megaphone, User, ClipboardList, ScrollText } from 'lucide-react';
 import { useAppStore } from '@/stores/app-store';
 import { useAuthStore } from '@/stores/auth-store';
 import { useTheme } from 'next-themes';
@@ -31,11 +31,9 @@ import {
   Moon,
   Sun,
   LogOut,
-  Settings,
   ChevronDown,
   Palette,
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
 
 const navItems = [
@@ -44,7 +42,6 @@ const navItems = [
   { id: 'my-courses' as const, label: 'My Courses', icon: GraduationCap },
   { id: 'assignments' as const, label: 'Assignments', icon: ClipboardList },
   { id: 'announcements' as const, label: 'Announcements', icon: Megaphone },
-  { id: 'notifications' as const, label: 'Notifications', icon: Bell },
 ];
 
 const professorItems = [
@@ -70,17 +67,15 @@ export function AppSidebar() {
     ? `${user.firstName[0]}${user.lastName[0]}`.toUpperCase()
     : 'U';
 
-  const unreadCount = Math.floor(Math.random() * 5); // placeholder
-
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="px-4 py-5">
+      <SidebarHeader className="px-4 py-4">
         <div className="flex items-center gap-3 overflow-hidden justify-center">
-          <div className="relative shrink-0">
-            <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full scale-150" />
-            <Image src="/logo.png" alt="Elévate" width={44} height={44} className="relative rounded-xl drop-shadow-md" priority />
+          <div className="relative shrink-0 rounded-xl overflow-hidden shadow-md">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0077B6] to-[#0A2647]" />
+            <Image src="/logo.png" alt="Elévate" width={40} height={40} className="relative rounded-xl" priority />
           </div>
-          <span className="text-xl font-bold tracking-tight whitespace-nowrap group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:w-0 transition-[opacity,width] duration-200">
+          <span className="text-lg font-bold tracking-tight whitespace-nowrap group-data-[collapsible=icon]:opacity-0 group-data-[collapsible=icon]:w-0 transition-[opacity,width] duration-200">
             <span className="bg-gradient-to-r from-[oklch(0.52_0.14_240)] to-[oklch(0.72_0.12_215)] bg-clip-text text-transparent">Elévate</span>
           </span>
         </div>
@@ -106,11 +101,7 @@ export function AppSidebar() {
                   >
                     <item.icon className="h-[18px] w-[18px]" />
                     <span>{item.label}</span>
-                    {item.id === 'notifications' && unreadCount > 0 && (
-                      <Badge variant="destructive" className="ml-auto h-5 min-w-5 text-[10px] px-1">
-                        {unreadCount}
-                      </Badge>
-                    )}
+
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
