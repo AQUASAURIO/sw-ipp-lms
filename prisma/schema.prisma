@@ -1,5 +1,5 @@
 // Elévate Learning Management System - Prisma Schema
-// PostgreSQL provider via Supabase
+// SQLite database (local development)
 
 generator client {
   provider = "prisma-client-js"
